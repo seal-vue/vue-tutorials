@@ -90,8 +90,17 @@
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
                 opacity: 0;
             }
-            
-            .dialog-header {
+            .primary .dialog-header,
+            .primary .hb-btn{
+                background:#0894ec;
+                color:#fff;
+            }
+            .success .dialog-header,
+            .success .hb-btn{
+                background:#6bc175;
+                color:#fff;
+            }
+            .dialog-header{
                 background:#0894ec;
                 color: #fff;
             }
@@ -176,11 +185,15 @@
                 </div>
 
                 <footer class="dialog-footer" slot="footer">
-                    <button class="hb-btn hb-btn-primary" @click="closeDialog">关闭</button>
+                    <button class="hb-btn" @click="closeDialog">关闭</button>
                 </footer>
             </modal-dialog>
 
-            <button class="hb-btn hb-btn-primary btn-open" @click="openDialog">打开对话框</button>
+            <div class="hb-btn-group hb-btn-group-lg btn-open">
+                <button type="button" class="hb-btn hb-btn-primary"  @click="openDialog('primary')">打开对话框</button>
+                <button type="button" class="hb-btn hb-btn-success"  @click="openDialog('success')">打开对话框</button>
+            </div>
+
         </div>
 
         <template id="dialog-template">
