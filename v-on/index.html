@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-type" content="application/x-www-form-urlencoded; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit" />
+<title>v-on</title>
+<link rel="stylesheet" type="text/css" href="http://static.haibian.com/seal/0.0.1/css/seal.min.css?v=1469521958" />
+<script src="../node_modules/vue/dist/vue.min.js"></script>
+<style>
+    body{
+        visibility: visible;
+    }
+    h1{
+        font-size: 30px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<div class="hb-container">
+  <div id="app">
+      <p><input type="text" v-model="message"></p>
+      <p>
+          <!--click事件直接绑定一个方法-->
+          <button v-on:click="greet">Greet</button>
+      </p>
+      <p>
+          <!--click事件使用内联语句-->
+          <button v-on:click="say('Hi')">Hi</button>
+      </p>
+      <p>
+          <!--click事件使用内联语句(简写)-->
+          <button @click="say('Hi')">Hi</button>
+      </p>
+  </div>
+</div>
+<script>
+  var vm = new Vue({
+      el: '#app',
+      data: {
+          message: 'Hello, Vue.js!'
+      },
+      // 在 `methods` 对象中定义方法
+      methods: {
+          greet: function() {
+              // // 方法内 `this` 指向 vm
+              alert(this.message)
+          },
+          say: function(msg) {
+              alert(msg)
+          }
+      }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-type" content="application/x-www-form-urlencoded; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit" />
+<title>v-for</title>
+<link rel="stylesheet" type="text/css" href="http://static.haibian.com/seal/0.0.1/css/seal.min.css?v=1469521958" />
+<script src="../node_modules/vue/dist/vue.min.js"></script>
+<style>
+    body{
+        visibility: visible;
+    }
+    h1{
+        font-size: 30px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<div class="hb-container">
+  <div id="app">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Sex</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="person in people">
+                <td>{{ person.name  }}</td>
+                <td>{{ person.age  }}</td>
+                <td>{{ person.sex  }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+<script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+          people: [{
+              name: 'Jack',
+              age: 30,
+              sex: 'Male'
+          }, {
+              name: 'Bill',
+              age: 26,
+              sex: 'Male'
+          }, {
+              name: 'Tracy',
+              age: 22,
+              sex: 'Female'
+          }, {
+              name: 'Chris',
+              age: 36,
+              sex: 'Male'
+          }]
+      }
+  })
+</script>
+</body>
+</html>

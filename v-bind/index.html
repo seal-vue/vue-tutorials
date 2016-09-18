@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-type" content="application/x-www-form-urlencoded; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit" />
+<title>v-bind</title>
+<link rel="stylesheet" type="text/css" href="http://static.haibian.com/seal/0.0.1/css/seal.min.css?v=1469521958" />
+<script src="../node_modules/vue/dist/vue.min.js"></script>
+<style>
+    body{
+        visibility: visible;
+    }
+    h1{
+        font-size: 30px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<div class="hb-container">
+  <div id="app">
+      <ul class="pagination">
+          <li v-for="n in pageCount">
+              <a href="javascripit:void(0)" v-bind:class="activeNumber === n + 1 ? 'active' : ''">{{ n + 1 }}</a>
+          </li>
+      </ul>
+  </div>
+</div>
+<script>
+     var vm = new Vue({
+        el: '#app',
+        data: {
+            activeNumber: 1,
+            pageCount: 10
+        }
+    })
+</script>
+</body>
+</html>
