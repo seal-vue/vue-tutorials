@@ -22,11 +22,14 @@
 <body>
     <div class="hb-container">
         <div id="app">
-            <my-component v-show="display">
+            <my-component>
                 <h1>Hello Vue.js!</h1>
             </my-component>
 
             <my_component>{{ a }}</my_component>
+
+            <child msg="hello,world!" ></child>
+
         </div>
         <template id="myComponent">
             <div class="content">
@@ -60,6 +63,28 @@
             }
           }
     });
+
+    // 全局组件注册
+    Vue.component('child', {
+        // 声明 props
+        props: ['msg','show'],
+        // prop 可以用在模板内
+        // 可以用 `this.msg` 设置
+        template: '<span v-show="display" @click="showMsg" >{{ msg }}</span> <input v-model="msg">',
+        data: function () {
+            return {
+                msg:'test',
+                display:true,
+            }
+        },
+        methods: {
+            showMsg:function(){
+                var _text = this.msg.trim();
+                alert(_text)
+            }
+        }
+    })
+
     // 定义组件
     var Child = Vue.extend({
       template: '#myComponent',
@@ -73,6 +98,7 @@
         return { a: 2 }
       }
     })
+
     // 注册
     //Vue.component('my-component', MyComponent)
     new Vue({
