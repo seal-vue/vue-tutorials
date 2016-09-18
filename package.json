@@ -1,0 +1,22 @@
+{
+  "name": "vue-tutorials",
+  "version": "0.0.1",
+  "description": "vue-tutorials",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seal-vue/vue-tutorials.git"
+  },
+  "author": "听着情歌流泪",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seal-vue/vue-tutorials/issues"
+  },
+  "homepage": "https://github.com/seal-vue/vue-tutorials#readme",
+  "devDependencies": {
+    "vue": "^1.0.26"
+  }
+}
