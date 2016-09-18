@@ -20,22 +20,23 @@
 </style>
 </head>
 <body>
-<div id="app">
-    <my-component>
-        <h1>Hello Vue.js!</h1>
-    </my-component>
+    <div class="hb-container">
+        <div id="app">
+            <my-component>
+                <h1>Hello Vue.js!</h1>
+            </my-component>
 
-    <my-component>
-    </my-component>
-</div>
-<template id="myComponent">
-    <div class="content">
-        <h2>这是组件</h2>
-        <slot>如果没有分发内容，则显示slot中的内容</slot>
-        <p>Say something...</p>
+            <my-component>
+            </my-component>
+        </div>
+        <template id="myComponent">
+            <div class="content">
+                <h2>这是组件</h2>
+                <slot>如果没有分发内容，则显示slot中的内容</slot>
+                <p>Say something...</p>
+            </div>
+        </template>
     </div>
-</template>
-
 
 <script>
     Vue.component('my-component', {
