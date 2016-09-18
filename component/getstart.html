@@ -21,14 +21,16 @@
 </head>
 <body>
 
-<div id="app">
-    <my-component></my-component>
+<div class="hb-container">
+    <div id="app">
+        <my-component></my-component>
+    </div>
 </div>
 
 <template id="myComponent">
     <div>
         <h2>{{ msg }}</h2>
-        <button v-on:click="showMsg">Show Message</button>
+        <button v-on:click="showMsg" class="hb-btn hb-btn-primary">Show Message</button>
     </div>
 </template>
 
