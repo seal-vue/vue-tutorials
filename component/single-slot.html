@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-type" content="application/x-www-form-urlencoded; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit" />
+<title>组件Slot</title>
+<link rel="stylesheet" type="text/css" href="http://static.haibian.com/seal/0.0.1/css/seal.min.css?v=1469521958" />
+<script src="../node_modules/vue/dist/vue.min.js"></script>
+<style>
+    body{
+        visibility: visible;
+    }
+    h1,h2{
+        font-size: 50px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<div id="app">
+    <my-component>
+        <h1>Hello Vue.js!</h1>
+    </my-component>
+
+    <my-component>
+    </my-component>
+</div>
+<template id="myComponent">
+    <div class="content">
+        <h2>这是组件</h2>
+        <slot>如果没有分发内容，则显示slot中的内容</slot>
+        <p>Say something...</p>
+    </div>
+</template>
+
+
+<script>
+    Vue.component('my-component', {
+        template: '#myComponent'
+    })
+
+    new Vue({
+        el: '#app'
+    })
+</script>
+</body>
+</html>
