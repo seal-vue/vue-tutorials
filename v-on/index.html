@@ -17,6 +17,9 @@
         font-size: 30px;
         text-align: center;
     }
+    p{
+      margin:10px auto;
+    }
 </style>
 </head>
 <body>
@@ -25,15 +28,15 @@
       <p><input type="text" v-model="message"></p>
       <p>
           <!--click事件直接绑定一个方法-->
-          <button v-on:click="greet">Greet</button>
+          <button v-on:click="greet" class="hb-btn hb-btn-primary">Greet</button>
       </p>
       <p>
           <!--click事件使用内联语句-->
-          <button v-on:click="say('Hi')">Hi</button>
+          <button v-on:click="say('Hi')"  class="hb-btn hb-btn-primary">Hi</button>
       </p>
       <p>
           <!--click事件使用内联语句(简写)-->
-          <button @click="say('Hi')">Hi</button>
+          <button @click="say('Hi')"  class="hb-btn hb-btn-primary">Hi</button>
       </p>
   </div>
 </div>
