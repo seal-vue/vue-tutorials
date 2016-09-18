@@ -60,11 +60,13 @@
                 position: fixed;
                 left: 50%;
                 top: 50%;
-                transform: translateX(-50%,-50%);
+                -webkit-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                -o-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
                 z-index: 2000;
                 visibility: hidden;
                 backface-visibility: hidden;
-                perspective: 1300px;
             }
             
             .dialog-active {
@@ -90,7 +92,7 @@
             }
             
             .dialog-header {
-                background: #cb4a70;
+                background:#0894ec;
                 color: #fff;
             }
             
@@ -107,8 +109,8 @@
             }
             
             .dialog-footer {
-                margin: 0 2em;
-                padding: 2em 0;
+                margin: 0;
+                padding: 1em;
                 text-align: right;
                 border-top: 1px solid rgba(0, 0, 0, 0.1);
             }
