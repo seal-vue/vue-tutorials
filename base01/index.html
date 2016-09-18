@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="Content-type" content="application/x-www-form-urlencoded; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="renderer" content="webkit" />
+<title>综合示例</title>
+<link rel="stylesheet" type="text/css" href="http://static.haibian.com/seal/0.0.1/css/seal.min.css?v=1469521958" />
+<script src="../node_modules/vue/dist/vue.min.js"></script>
+<style>
+    body{
+        visibility: visible;
+    }
+    h1{
+        font-size: 30px;
+        text-align: center;
+    }
+    p{
+      margin:10px auto;
+    }
+</style>
+</head>
+<body>
+<div class="hb-container">
+  <div id="app">
+
+            <fieldset>
+                <legend>
+                    Create New Person
+                </legend>
+                <div class="form-group">
+                    <label>姓名:</label>
+                    <input type="text" v-model="newPerson.name"/>
+                </div>
+                <div class="form-group">
+                    <label>年龄:</label>
+                    <input type="text" v-model="newPerson.age"/>
+                </div>
+                <div class="form-group">
+                    <label>性别:</label>
+                    <select v-model="newPerson.sex">
+                    <option value="Male">男</option>
+                    <option value="Female">女</option>
+                </select>
+                </div>
+                <div class="form-group">
+                    <label></label>
+                    <button @click="createPerson" class="hb-btn hb-btn-black">创建</button>
+                </div>
+        </fieldset>
+        <table>
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>删除</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="person in people">
+                    <td>{{ person.name }}</td>
+                    <td>{{ person.age }}</td>
+                    <td>{{ person.sex }}</td>
+                    <td :class="'text-center'"><button @click="deletePerson($index)">删除</button></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+</div>
+<script>
+  var vm = new Vue({
+            el: '#app',
+            data: {
+                newPerson: {
+                    name: '',
+                    age: 0,
+                    sex: 'Male'
+                },
+                people: [{
+                    name: 'Jack',
+                    age: 30,
+                    sex: 'Male'
+                }, {
+                    name: 'Bill',
+                    age: 26,
+                    sex: 'Male'
+                }, {
+                    name: 'Tracy',
+                    age: 22,
+                    sex: 'Female'
+                }, {
+                    name: 'Chris',
+                    age: 36,
+                    sex: 'Male'
+                }]
+            },
+            methods:{
+                createPerson: function(){
+                    this.people.push(this.newPerson);
+                    // 添加完newPerson对象后，重置newPerson对象
+                    this.newPerson = {name: '', age: 0, sex: 'Male'}
+                },
+                deletePerson: function(index){
+                    // 删一个数组元素
+                    this.people.splice(index,1);
+                }
+            }
+        })
+</script>
+</body>
+</html>
