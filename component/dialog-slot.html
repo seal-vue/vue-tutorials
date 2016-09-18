@@ -59,8 +59,8 @@
                 width: 480px;
                 position: fixed;
                 left: 50%;
-                top: 2em;
-                transform: translateX(-50%);
+                top: 50%;
+                transform: translateX(-50%,-50%);
                 z-index: 2000;
                 visibility: hidden;
                 backface-visibility: hidden;
@@ -74,7 +74,6 @@
             .dialog-active .dialog-content {
                 position: relative;
                 opacity: 1;
-                transform: rotateY(0);
             }
             
             .dialog-active ~ .dialog-overlay {
@@ -87,10 +86,7 @@
                 background: #fff;
                 overflow: hidden;
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                transition: .5s ease-in-out;
                 opacity: 0;
-                transform-style: preserve-3d;
-                transform: rotateY(-70deg);
             }
             
             .dialog-header {
@@ -160,18 +156,6 @@
                 color: #fff;
             }
             
-            .rotate {
-                cursor: pointer;
-            }
-            
-            .rotate:hover {
-                transform: rotate(360deg);
-                -moz-transform: rotate(360deg);
-                -webkit-transform: rotate(360deg);
-                transition: transform 1.0s ease all;
-                -moz-transition: -moz-transform 1.0s ease all;
-                -webkit-transition: -webkit-transform 1.0s ease all;
-            }
 </style>
 </head>
 <body>
@@ -193,7 +177,7 @@
                 </footer>
             </modal-dialog>
 
-            <button class="hb-btn hb-btn-primary" @click="openDialog">打开对话框</button>
+            <button class="hb-btn hb-btn-primary btn-open" @click="openDialog">打开对话框</button>
         </div>
 
         <template id="dialog-template">
@@ -230,7 +214,7 @@
             dialogClass: 'dialog-info'
         },
         methods: {
-            openDialog: function() {
+            openDialog: function(dialogClass) {
                 this.show = true,
                 this.dialogClass = dialogClass
             },
