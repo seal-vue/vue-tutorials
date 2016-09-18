@@ -177,7 +177,7 @@
 <body>
     <div class="hb-container">
         <div id="app">
-            <modal-dialog v-bind:show.sync="show">
+            <modal-dialog v-bind:show.sync="show" v-bind:class="dialogClass">
 
                 <header class="dialog-header" slot="header">
                     <h1 class="dialog-title">提示信息</h1>
@@ -200,7 +200,7 @@
             <div class="dialogs">
                 <div class="dialog" v-bind:class="{ 'dialog-active': show }">
                     <div class="dialog-content">
-                        <div class="close rotate">
+                        <div class="close">
                             <span class="iconfont icon-close" @click="close">x</span>
                         </div>
                         <slot name="header"></slot>
@@ -226,11 +226,13 @@
     new Vue({
         el: '#app',
         data: {
-            show: false
+            show: false,
+            dialogClass: 'dialog-info'
         },
         methods: {
             openDialog: function() {
-                this.show = true
+                this.show = true,
+                this.dialogClass = dialogClass
             },
             closeDialog: function() {
                 this.show = false
