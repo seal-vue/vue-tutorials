@@ -167,12 +167,15 @@
                 font-size: 2rem;
                 color: #fff;
             }
+            p{
+                font-size: 20px;
+            }
             
 </style>
 </head>
 <body>
     <div class="hb-container">
-        <div id="app">
+        <div id="app" @keyup.esc.enter="closeDialog">
             <modal-dialog v-bind:show.sync="show" v-bind:class="dialogClass">
 
                 <header class="dialog-header" slot="header">
@@ -180,12 +183,17 @@
                 </header>
 
                 <div class="dialog-body" slot="body">
-                    <p>你想在对话框中放什么内容都可以！</p>
-                    <p>你可以放一段文字，也可以放一些表单，或者是一些图片。</p>
+                    <p>失去焦点：{{ lazymsg }}</p>
+                    <p>实时：{{ msg }}</p>
+                    <p>延迟：{{ msgdebounce }}</p>
+                    <input v-model="lazymsg" lazy>
+                    <input v-model="msg" number>
+                    <input v-model="msgdebounce" debounce="500">
                 </div>
 
                 <footer class="dialog-footer" slot="footer">
-                    <button class="hb-btn" @click="closeDialog">关闭</button>
+                    <a href="#" class="hb-btn" @click.stop.prevent="closeDialog">关闭</a>
+                    <button type="button" class="hb-btn"  @click.stop.prevent="closeDialog">关闭</button>
                 </footer>
             </modal-dialog>
 
@@ -201,7 +209,7 @@
                 <div class="dialog" v-bind:class="{ 'dialog-active': show }">
                     <div class="dialog-content">
                         <div class="close">
-                            <span class="iconfont icon-close" @click="close">x</span>
+                            <span class="iconfont icon-close" @keyup.esc="close">x</span>
                         </div>
                         <slot name="header"></slot>
                         <slot name="body"></slot>
@@ -226,6 +234,9 @@
     new Vue({
         el: '#app',
         data: {
+            lazymsg : 'lazymsg',
+            msg : '123',
+            msgdebounce: 'debounce',
             show: false,
             dialogClass: 'dialog-info'
         },

@@ -22,29 +22,68 @@
 <body>
     <div class="hb-container">
         <div id="app">
-            <my-component>
+            <my-component v-show="display">
                 <h1>Hello Vue.js!</h1>
             </my-component>
 
-            <my-component>
-            </my-component>
+            <my_component>{{ a }}</my_component>
         </div>
         <template id="myComponent">
             <div class="content">
-                <h2>这是组件</h2>
+                <h2>这是组件{{ msg }}</h2>
                 <slot>如果没有分发内容，则显示slot中的内容</slot>
                 <p>Say something...</p>
+            </div>
+        </template>
+
+        <template id="my_Component">
+            <div class="content">
+                <h2>这是组件{{ a }}</h2>
+                
             </div>
         </template>
     </div>
 
 <script>
+    // 全局注册组件，tag 为 my-component
+    Vue.component('my_component', {
+        template: '#my_Component',
+          data: function () {
+            return { a: 2 }
+          }
+    });
     Vue.component('my-component', {
-        template: '#myComponent'
+        template: '#myComponent',
+          data: function () {
+            return {
+                msg: 'This is a component!',
+            }
+          }
+    });
+    // 定义组件
+    var Child = Vue.extend({
+      template: '#myComponent',
+      data: function () {
+        return { a: 1 }
+      }
     })
-
+    var Child_1 = Vue.extend({
+      template: '#my_Component',
+      data: function () {
+        return { a: 2 }
+      }
+    })
+    // 注册
+    //Vue.component('my-component', MyComponent)
     new Vue({
-        el: '#app'
+        el: '#app',
+        data: {
+            display: true
+        },
+        // components:{
+        //     'my-component': Child,
+        //     'my_component': Child_1
+        // }
     })
 </script>
 </body>
